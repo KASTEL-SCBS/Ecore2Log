@@ -47,10 +47,7 @@ abstract class AbstractProfiledEcore2LogGenerator<N extends Metamodel2LogNameCon
 	}
 	
 	override generateIDReplacement(EObject e) {
-		if (e instanceof StereotypeApplication) {
-			val sa = e as StereotypeApplication
-			return generateID(sa.appliedTo)
-		}	
+		if (e instanceof StereotypeApplication) throw new IllegalArgumentException();
 		super.generateIDReplacement(e)
 	}
 	

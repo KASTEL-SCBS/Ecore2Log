@@ -23,6 +23,7 @@ import java.util.List
 
 import static extension edu.kit.ipd.sdq.commons.util.java.lang.IterableUtil.mapFixed
 import org.eclipse.internal.xtend.util.Triplet
+import org.modelversioning.emfprofileapplication.StereotypeApplication
 
 public abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConfiguration> extends AbstractEcore2TxtGenerator {
     val Metamodel2LogFilter mm2LogFilter
@@ -138,9 +139,10 @@ public abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConf
 			newLine = generateNewLine()
 		}
 		val instancePredicate = generateInstancePredicate(e)
+		val instanceDescriptionPredicate = generateInstanceDescriptionPredicate(e)
 		val features = generateFeatures(e)
 		val children = generateChildren(e)
-		return newLine + instanceCommentOpening + instancePredicate + features + children + instanceCommentClosing + newLine
+		return newLine + instanceCommentOpening + instanceDescriptionPredicate + instancePredicate + features + children + instanceCommentClosing + newLine
 	}
 	
 	def String generateInstanceCommentOpening(EObject e) {
@@ -168,7 +170,17 @@ public abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConf
 		return ""
 	}
 	
+	def String generateInstanceDescriptionPredicate(EObject e) {
+		val name = generateName(e)?.replace("'"," ") 
+		return generateRelation(nameConfig.descriptionPredicateName, generateID(e), "'" + name + "'")
+	}
+	
 	def String generateID(EObject e) {
+		if (e instanceof StereotypeApplication) {
+			val sa = e as StereotypeApplication
+			return generateID(sa.appliedTo)
+		}	
+		
 		val idAttribute = nameConfig.getIDAttribute(e)
 		if (idAttribute == null) {
 			val replacementValue = generateIDReplacement(e)
@@ -248,7 +260,7 @@ public abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConf
 //		return ""
 //	}
 
-	def private String concatAndFilterFeatureValue(List<String> featureValues) '''«logConfig.generateListOpening»«FOR elem : featureValues.filter[mm2LogFilter.relevantFeatureValue(it)] SEPARATOR logConfig.generateListSeparator»«elem»«ENDFOR»«logConfig.generateListClosing»'''
+	def String concatAndFilterFeatureValue(List<String> featureValues) '''«logConfig.generateListOpening»«FOR elem : featureValues.filter[mm2LogFilter.relevantFeatureValue(it)] SEPARATOR logConfig.generateListSeparator»«elem»«ENDFOR»«logConfig.generateListClosing»'''
 	
 	def List<String> generateFeatureValues(EObject e, EStructuralFeature feature) {
 		if (feature.many) {

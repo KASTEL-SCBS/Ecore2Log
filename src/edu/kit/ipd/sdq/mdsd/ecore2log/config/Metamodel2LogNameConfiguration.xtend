@@ -11,6 +11,8 @@ interface Metamodel2LogNameConfiguration {
 	
 	def String getFileExtension()
 	
+	def String getDescriptionPredicateName()
+	
 	def String getInstanceName(EObject e)
 	
 	def String getFeatureName(EObject e, EStructuralFeature feature)

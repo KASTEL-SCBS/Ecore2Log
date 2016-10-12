@@ -54,4 +54,9 @@ class DefaultMetamodel2LogNameConfiguration implements Metamodel2LogNameConfigur
 		return e?.toString
 	}
 	
+	
+	override getDescriptionPredicateName() {
+		return "description"
+	}
+	
 }
