@@ -171,8 +171,9 @@ public abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConf
 	}
 	
 	def String generateInstanceDescriptionPredicate(EObject e) {
-		val name = generateName(e)?.replace("'"," ") 
-		return generateRelation(nameConfig.descriptionPredicateName, generateID(e), "'" + name + "'")
+		val name = generateName(e)?.replace("'"," ")
+		val instanceName = nameConfig.getInstanceName(e)?.replace("'", " ")
+		return generateRelation(nameConfig.descriptionPredicateName, generateID(e), #["'" + name + "'", "'" + instanceName + "'" ])
 	}
 	
 	def String generateID(EObject e) {
@@ -252,6 +253,14 @@ public abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConf
 		if (!value?.equals("")) {
 			content += logConfig.generatePredicateSeparator + value
 		} 
+		content += logConfig.generatePredicateClosing
+	}
+	
+	def String generateRelation(String predicateName, String id, List<String> values) {
+		var content = predicateName + logConfig.generatePredicateOpening + id
+		for (String value : values) {
+			content += logConfig.generatePredicateSeparator + value
+		}
 		content += logConfig.generatePredicateClosing
 	}
 	
