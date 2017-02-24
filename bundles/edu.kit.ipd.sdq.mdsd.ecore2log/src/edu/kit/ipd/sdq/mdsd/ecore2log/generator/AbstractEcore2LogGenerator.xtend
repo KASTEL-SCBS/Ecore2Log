@@ -1,6 +1,6 @@
 package edu.kit.ipd.sdq.mdsd.ecore2log.generator
 
-import edu.kit.ipd.sdq.commons.ecore2txt.generator.AbstractEcore2TxtGenerator
+import edu.kit.ipd.sdq.mdsd.ecore2txt.generator.AbstractEcore2TxtGenerator
 import edu.kit.ipd.sdq.mdsd.ecore2log.config.DefaultLogConfiguration
 import edu.kit.ipd.sdq.mdsd.ecore2log.config.LogConfiguration
 import edu.kit.ipd.sdq.mdsd.ecore2log.config.Metamodel2LogFilter

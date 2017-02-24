@@ -16,7 +16,7 @@ Require-Bundle: com.google.guava,
  org.eclipse.core.commands,
  org.eclipse.jface,
  org.eclipse.ui.workbench,
- edu.kit.ipd.sdq.commons.ecore2txt,
+ edu.kit.ipd.sdq.mdsd.ecore2txt,
  org.palladiosimulator.mdsdprofiles.api,
  org.modelversioning.emfprofile,
  tools.vitruv.framework.util
