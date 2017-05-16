@@ -139,7 +139,10 @@ public abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConf
 			newLine = generateNewLine()
 		}
 		val instancePredicate = generateInstancePredicate(e)
-		val instanceDescriptionPredicate = generateInstanceDescriptionPredicate(e)
+		var instanceDescriptionPredicate = ""
+		if (userConfig.generateDescriptions) {
+			instanceDescriptionPredicate = generateInstanceDescriptionPredicate(e)
+		}
 		val features = generateFeatures(e)
 		val children = generateChildren(e)
 		return newLine + instanceCommentOpening + instanceDescriptionPredicate + instancePredicate + features + children + instanceCommentClosing + newLine

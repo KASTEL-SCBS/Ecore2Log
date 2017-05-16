@@ -15,7 +15,8 @@ abstract class AbstractEcore2LogHandler extends AbstractEcoreIFile2TxtHandler {
 		val groupFacts = Boolean.parseBoolean(event.getParameter(plugInID + ".groupFactsParameter"))
 		val simplifyIDs = Boolean.parseBoolean(event.getParameter(plugInID + ".simplifyIDsParameter"))
 		val concatOutputToSingleFile = Boolean.parseBoolean(event.getParameter(plugInID + ".concatOutputToSingleFileParameter"))
-		val userConfiguration = new DefaultUserConfiguration(generateComments, groupFacts, simplifyIDs, concatOutputToSingleFile)
+		val generateDescriptions = Boolean.parseBoolean(event.getParameter(plugInID + ".generateDescriptions"))
+		val userConfiguration = new DefaultUserConfiguration(generateComments, groupFacts, simplifyIDs, concatOutputToSingleFile, generateDescriptions)
 		executeEcore2TxtGenerator(files, userConfiguration)
 	}
 	

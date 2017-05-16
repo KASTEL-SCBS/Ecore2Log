@@ -5,4 +5,5 @@ interface UserConfiguration {
 	def boolean groupFacts()
 	def boolean simplifyIDs()
 	def boolean concatOutputToSingleFile()
+	def boolean generateDescriptions()
 }
