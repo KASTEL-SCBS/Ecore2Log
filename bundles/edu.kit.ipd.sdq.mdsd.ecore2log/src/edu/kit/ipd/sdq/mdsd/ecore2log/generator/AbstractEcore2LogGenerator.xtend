@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.internal.xtend.util.StringHelper
 import java.util.List
 
 import static extension edu.kit.ipd.sdq.commons.util.java.lang.IterableUtil.mapFixed
@@ -85,17 +84,17 @@ public abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConf
 	        // Since there may be predicates with the same name but different arities (e.g.: "resourceContainer(22,24)." and "resourceContainer(24)."),
 	        // we cannot group facts simply by sorting them.
 	        // Instead, we attempt a rudimentary parsing of the lines, determining predicate name and arity. 
-	        // TODO: support more non-simple facts, which unfortunately are described by a non-regular grammar.
-	        // Currently, only facts like foo(bar), foo(bar,baz), foo(bar,[list,of,bazs]) are supported.
 	        while (line != null ) {
 	        	if (!line.equals("")) {
-	        		if (!line.matches("^(\\p{Alpha}|_)*\\(([^,\\(\\)]*,)*[^\\(\\)]*\\)\\.$")) {
-	        			// TODO: better error handling?!?!
-	        			throw new RuntimeException("non-simple fact generated: " + line)
+	        		val parser = new PrologFactParser(line)
+	        		val fact  = parser.parseFact()
+	        		
+	        		if (!fact.toString().replace(" ", "").equals(line.replace(" ", ""))) {
+	        			throw new AssertionError("Invalid parse \"" + fact.toString() + "\" for \"" + fact + "\"")
 	        		}
-	        		val predicateName = line.split("\\(",2).head
-	        		val withoutLists  = line.replaceAll("\\[[^\\]]*\\]",".")
-	        		val argnr = StringHelper.numMatches(withoutLists,',') + 1
+	        		
+	        		val predicateName = fact.getAtom()
+	        		val argnr = fact.getArgs.size()
 		        	val predicate = new Pair(predicateName,argnr)
 		        	facts.putIfAbsent(predicate, new LinkedList<String>)
 		        	facts.get(predicate).add(line);
