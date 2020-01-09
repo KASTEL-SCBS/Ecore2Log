@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.lang.Object;
 
 enum TokenType {
 	EOF(null),
@@ -92,6 +93,11 @@ public final class PrologFactParser {
 		@Override
 		public String toString() {
 			return super.toString() + ".";
+		}
+		
+		@Override
+		public List<Term> getArgs(){
+			return super.args;
 		}
 	}
 	

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Emf2log
 Bundle-SymbolicName: edu.kit.ipd.sdq.mdsd.ecore2log
-Bundle-Version: 1.1.0
+Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: SDQ
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: com.google.guava,
@@ -22,5 +22,3 @@ Require-Bundle: com.google.guava,
 Export-Package: edu.kit.ipd.sdq.mdsd.ecore2log.config,
  edu.kit.ipd.sdq.mdsd.ecore2log.generator,
  edu.kit.ipd.sdq.mdsd.ecore2log.handler
-Import-Package: com.google.inject
-

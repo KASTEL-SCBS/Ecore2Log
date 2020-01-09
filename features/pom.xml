@@ -6,9 +6,9 @@
 		<groupId>edu.kit.ipd.sdq.mdsd.ecore2log</groupId>
 		<artifactId>parent</artifactId>
 		<version>1.1.0-SNAPSHOT</version>
-		<relativePath>../edu.kit.ipd.sdq.mdsd.ecore2log.parent</relativePath>
+		<relativePath>../releng/edu.kit.ipd.sdq.mdsd.ecore2log.parent</relativePath>
 	</parent>
-	<artifactId>edu.kit.ipd.sdq.mdsd.ecore2log.updatesite</artifactId>
-	<name>ecore2log Update Site</name>
-	<packaging>eclipse-repository</packaging>
+	<artifactId>edu.kit.ipd.sdq.mdsd.ecore2log.features</artifactId>
+	<packaging>pom</packaging>
+	<name>Ecore2Log Feature Modules</name>
 </project>
