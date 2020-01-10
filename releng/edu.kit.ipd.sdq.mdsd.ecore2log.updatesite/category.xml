@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/edu.kit.ipd.sdq.mdsd.ecore2log.feature_1.0.0.qualifier.jar" id="edu.kit.ipd.sdq.mdsd.ecore2log.feature" version="1.0.0.qualifier">
+      <category name="ecore2log"/>
+   </feature>
+     <feature id="edu.kit.ipd.sdq.mdsd.ecore2log.feature.source" version="1.0.0.qualifier">
+      <category name="ecore2log"/>
+   </feature>
+   <category-def name="ecore2log" label="ecore2log">
+      <description>
+         Generate logical programs from ecore models
+      </description>
+   </category-def>
+</site>

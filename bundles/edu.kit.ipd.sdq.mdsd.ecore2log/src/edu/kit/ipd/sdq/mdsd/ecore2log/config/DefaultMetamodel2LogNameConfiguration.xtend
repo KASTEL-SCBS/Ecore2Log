@@ -30,7 +30,7 @@ class DefaultMetamodel2LogNameConfiguration implements Metamodel2LogNameConfigur
 	
 	override getSimpleIDValue(Object idValue) {
 		var num = id2seqNumMap.get(idValue)
-		if (num == null) {
+		if (num === null) {
 			maxSeqNum += 1
 			num = maxSeqNum
 			id2seqNumMap.put(idValue,maxSeqNum)

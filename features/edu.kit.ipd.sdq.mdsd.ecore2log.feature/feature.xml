@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="edu.kit.ipd.sdq.mdsd.ecore2log.feature"
+      label="Ecore2Log"
+      version="1.0.0.qualifier">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import plugin="com.google.guava"/>
+      <import plugin="org.eclipse.xtext.xbase.lib"/>
+      <import plugin="org.eclipse.xtend.lib"/>
+      <import plugin="org.eclipse.xtend.lib.macro"/>
+      <import plugin="org.eclipse.xtext.generator"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="edu.kit.ipd.sdq.commons.util.java"/>
+      <import plugin="org.eclipse.equinox.registry"/>
+      <import plugin="org.eclipse.core.commands"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.eclipse.ui.workbench"/>
+      <import plugin="edu.kit.ipd.sdq.mdsd.ecore2txt"/>
+      <import plugin="org.palladiosimulator.mdsdprofiles.api"/>
+      <import plugin="org.modelversioning.emfprofile"/>
+   </requires>
+
+   <plugin
+         id="edu.kit.ipd.sdq.mdsd.ecore2log"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

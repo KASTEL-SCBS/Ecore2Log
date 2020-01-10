@@ -19,12 +19,13 @@ import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.resource.Resource
 import java.util.List
+import java.lang.Object;
 
 import static extension edu.kit.ipd.sdq.commons.util.java.lang.IterableUtil.mapFixed
 import org.eclipse.internal.xtend.util.Triplet
 import org.modelversioning.emfprofileapplication.StereotypeApplication
 
-public abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConfiguration> extends AbstractEcore2TxtGenerator {
+abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConfiguration> extends AbstractEcore2TxtGenerator {
     val Metamodel2LogFilter mm2LogFilter
 	val N nameConfig
 	val LogConfiguration logConfig
@@ -84,7 +85,7 @@ public abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConf
 	        // Since there may be predicates with the same name but different arities (e.g.: "resourceContainer(22,24)." and "resourceContainer(24)."),
 	        // we cannot group facts simply by sorting them.
 	        // Instead, we attempt a rudimentary parsing of the lines, determining predicate name and arity. 
-	        while (line != null ) {
+	        while (line !== null ) {
 	        	if (!line.equals("")) {
 	        		val parser = new PrologFactParser(line)
 	        		val fact  = parser.parseFact()
@@ -94,7 +95,7 @@ public abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConf
 	        		}
 	        		
 	        		val predicateName = fact.getAtom()
-	        		val argnr = fact.getArgs.size()
+	        		var argnr = fact.getArgs().size()
 		        	val predicate = new Pair(predicateName,argnr)
 		        	facts.putIfAbsent(predicate, new LinkedList<String>)
 		        	facts.get(predicate).add(line);
@@ -180,12 +181,12 @@ public abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConf
 	
 	def String generateID(EObject e) {
 		if (e instanceof StereotypeApplication) {
-			val sa = e as StereotypeApplication
+			val sa = e;
 			return generateID(sa.appliedTo)
 		}	
 		
 		val idAttribute = nameConfig.getIDAttribute(e)
-		if (idAttribute == null) {
+		if (idAttribute === null) {
 			val replacementValue = generateIDReplacement(e)
 			return generateIDValue(e, replacementValue)
 		}
@@ -196,7 +197,7 @@ public abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConf
 	
 	def String generateIDReplacement(EObject e) {
 		var idReplacement = nameConfig.getIDReplacement(e)
-		if (idReplacement == null) {
+		if (idReplacement === null) {
 			// FIXME MK warn 
 		} else 
 		return idReplacement
@@ -312,7 +313,7 @@ public abstract class AbstractEcore2LogGenerator<N extends Metamodel2LogNameConf
 	}
 	
 	def String generateAttributeValue(EObject e, Object attributeValue) {
-		return if (attributeValue == null) logConfig.generateNullPlaceholder() else attributeValue.toString
+		return if (attributeValue === null) logConfig.generateNullPlaceholder() else attributeValue.toString
 	}
 
 	def String generateChildren(EObject e) {
