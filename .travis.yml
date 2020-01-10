@@ -14,7 +14,7 @@ install: true
 script: mvn clean verify
 
 after_success:
-- . /tmp/BuildUtilities/travis-ci/deploy.sh ecore2log releng/edu.kit.kastel.scbs.confidentiality.updatesite.aggregated final KASTEL-SCBS updatesite
+- . /tmp/BuildUtilities/travis-ci/deploy.sh ecore2log releng/edu.kit.ipd.sdq.mdsd.ecore2log.updatesite.aggregated final KASTEL-SCBS updatesite
 
 notifications:
   slack:
