@@ -20,6 +20,10 @@
 	<features name="org.palladiosimulator.pcm.feature.feature.group" versionRange="4.2.0"/>
 	<features name="org.palladiosimulator.editors.tree.feature.feature.group" versionRange="4.0.1"/>
       </repositories>
+      <repositories location="https://kit-sdq.github.io/updatesite/nightly/ecore2txt/" mirrorArtifacts="true">
+      <features name="edu.kit.ipd.mdsd.ecore2txt.feature.source.group" versionRange="[1.0.0,2.0.0)"/>
+      <features name="edu.kit.ipd.mdsd.ecore2txt.feature.group" versionRange="[1.0.0,2.0.0)"/>
+      </repositories> 
     </contributions>
   </validationSets>
   <configurations architecture="x86_64"/>
