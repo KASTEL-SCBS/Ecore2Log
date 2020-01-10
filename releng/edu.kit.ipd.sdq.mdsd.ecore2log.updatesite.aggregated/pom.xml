@@ -9,6 +9,7 @@
 		<relativePath>../edu.kit.ipd.sdq.mdsd.ecore2log.parent</relativePath>
 	</parent>
 	<artifactId>edu.kit.ipd.sdq.mdsd.ecore2log.updatesite.aggregated</artifactId>
+	<packaging>pom</packaging>
 	<name>ecore2log Aggregated Update Site</name>
 		<build>
 		<plugins>
