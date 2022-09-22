@@ -4,6 +4,7 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.EAttribute
+import java.util.Map
 
 interface Metamodel2LogNameConfiguration {
 	
@@ -26,5 +27,7 @@ interface Metamodel2LogNameConfiguration {
 	def String getNameValue(EObject e)
 	
 	def String getIDReplacement(EObject e)
+	
+	def Map<Object,Integer> getIDMap();
 	
 }
