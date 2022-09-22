@@ -54,9 +54,14 @@ class DefaultMetamodel2LogNameConfiguration implements Metamodel2LogNameConfigur
 		return e?.toString
 	}
 	
+	override getIDMap() {
+		return this.id2seqNumMap
+	}
 	
 	override getDescriptionPredicateName() {
 		return "description"
 	}
+	
+	
 	
 }
